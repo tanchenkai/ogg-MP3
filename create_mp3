@@ -1,0 +1,24 @@
+import os
+def convert_ogg_to_mp3(folder_path):
+    """
+    This function renames all files with .ogg extension to .mp3 extension
+    in the specified folder.
+
+    Args:
+    folder_path (str): The path to the folder where the files are located.
+    """
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".ogg"):
+            # Split the filename into name and extension
+            name, extension = os.path.splitext(filename)
+            # Create the new filename with .mp3 extension
+            new_filename = name + ".mp3"
+            # Construct full path for old and new filenames
+            old_file = os.path.join(folder_path, filename)
+            new_file = os.path.join(folder_path, new_filename)
+            # Rename the file
+            os.rename(old_file, new_file)
+            print(f"Renamed {filename} to {new_filename}")
+
+folder_path = "figs//temp"
+convert_ogg_to_mp3(folder_path)
